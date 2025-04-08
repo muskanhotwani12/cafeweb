@@ -545,3 +545,25 @@ footer {
     text-align: center;
     color: #2e7d32;
   }
+
+.chef-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.chef {
+    max-width: 300px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+.chef img {
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
