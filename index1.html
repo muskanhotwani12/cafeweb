@@ -42,6 +42,7 @@
         <a href="menu.html" class="btn">Explore Menu</a>
     </section>
 
+
     <!-- 🌟 Interactive Menu -->
     <section id="menu" class="menu">
         <h2>Our Special Dishes</h2>
@@ -164,28 +165,66 @@
     
 
     <!-- 🍽 Food Customization -->
-    <section id="customization" class="customization">
-        <h2>Customize Your Order</h2>
-        <label>
-            <input type="checkbox"> Extra Cheese
-        </label>
-        <label>
-            <input type="checkbox"> No Onions
-        </label>
-        <label>
-            <input type="checkbox"> Gluten-Free
-        </label>
-        <button onclick="submitCustomization()">Submit</button>
-    </section>
+    <section id="customization" class="customization-section">
+        <h2>✨ Customize Your Order</h2>
+      
+        <div class="custom-box">
+      
+          <div class="custom-item">
+            <span>🧀 Extra Cheese</span>
+            <label class="switch">
+              <input type="checkbox" value="Extra Cheese" class="custom-option">
+              <span class="slider round"></span>
+            </label>
+          </div>
+      
+          <div class="custom-item">
+            <span>🧅 No Onions</span>
+            <label class="switch">
+              <input type="checkbox" value="No Onions" class="custom-option">
+              <span class="slider round"></span>
+            </label>
+          </div>
+      
+          <div class="custom-item">
+            <span>🌾 Gluten-Free</span>
+            <label class="switch">
+              <input type="checkbox" value="Gluten-Free" class="custom-option">
+              <span class="slider round"></span>
+            </label>
+          </div>
+      
+          <div class="custom-item">
+            <span>🔥 Spicy Level</span>
+            <select id="spice-level">
+              <option value="Mild">🌶 Mild</option>
+              <option value="Medium">🌶🌶 Medium</option>
+              <option value="Hot">🌶🌶🌶 Hot</option>
+            </select>
+          </div>
+      
+          <div class="custom-item textarea">
+            <label for="special-note">📝 Special Instructions:</label>
+            <textarea id="special-note" rows="3" placeholder="Add any special notes..."></textarea>
+          </div>
+      
+          <button onclick="submitCustomization()">✅ Submit</button>
+          <p id="customization-message"></p>
+        </div>
+      </section>
 
     
 
     <!-- 🚚 Order Tracking -->
-    <section id="order-tracking" class="order-tracking">
-        <h2>Track Your Order</h2>
-        <p id="order-status">Your order is being prepared...</p>
-        <button onclick="updateOrderStatus()">Refresh Status</button>
-    </section>
+    <section id="order-tracking" class="tracking-section">
+        <h2>📦 Track Your Order</h2>
+        <input type="text" placeholder="Enter Order ID" id="order-id-input">
+        <button onclick="trackOrder()">Track</button>
+        <p id="tracking-result"></p>
+      </section>
+      
+
+
     <section id="rating" class="rating">
         <h2>Rate Us</h2>
         <div class="star-rating">
@@ -198,6 +237,27 @@
         <p id="selected-rating">Your rating: ★★★★☆</p>
         <button onclick="submitRating()">Submit Rating</button>
     </section>
+    
+<section id="chefs" class="chefs">
+    <h2>Meet Our Chefs 👨‍🍳👩‍🍳</h2>
+    <div class="chef-container">
+        <div class="chef">
+            <img src="https://www.alamy.com/aggregator-api/download?url=https%3A%2F%2Fc8.alamy.com%2Fcomp%2FBT0M92%2Fyoung-beautiful-female-chef-portrait-in-kitchen-BT0M92.jpg" alt="Chef Anna" width="150">
+            <h3>Chef Anna Rossi</h3>
+            <p>Specializes in Italian cuisine with 15+ years of experience. Known for her signature creamy pasta dishes.</p>
+        </div>
+        <div class="chef">
+            <img src="https://images.freeimages.com/images/premium/previews/2921/29216242-male-chef-portrait.jpg" alt="Chef David" width="150">
+            <h3>Chef David Lee</h3>
+            <p>Master of Asian fusion and sushi art. Bringing vibrant and delicious flavors to your plate every time.</p>
+        </div>
+        <div class="chef">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnVjEFAS74pllmKpx73CjxV5xjL5kD8kBtWA&s" alt="Chef Dhruv" width="150">
+            <h3>Chef Dhruv Kapoor</h3>
+            <p>Expert in desserts and bakery delights. Her chocolate lava cake is a customer favorite!</p>
+        </div>
+    </div>
+</section>
 
 
   <section id="reviews" class="reviews">
