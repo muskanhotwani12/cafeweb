@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Restaurant Menu</title>
+  <style>
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body style="font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%); color: #333; text-align: center; margin: 0; padding: 0;">
+
+  <div id="loader" style="position: fixed; width: 100%; height: 100%; background: white; display: flex; justify-content: center; align-items: center;">
+    <div style="border: 8px solid #f3e5ab; border-top: 8px solid #8b5a2b; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite;"></div>
+  </div>
+
+  <div id="content" style="display: none;">
+    <header style="background-color: #8b5a2b; color: white; padding: 15px;">
+      <h1>Delicious Bites</h1>
+    </header>
+
+    <div style="padding: 20px;">
+      <section id="menu" style="display: flex; flex-direction: column; overflow-y: auto; max-height: 80vh; width: 100%; margin: auto;"></section>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      setTimeout(function () {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("content").style.display = "block";
+      }, 1000);
+    });
+
+    const menuItems = [
+      { name: "Alu Chana Masala ", price: 130, img: "https://images.app.goo.gl/GC9EjKvtVokGabMF9&s" },
+      { name: "Kadhai Pakoda", price: 180, img: "https://images.app.goo.gl/uz9c5aJbiE4qhwsE9" },
+      { name: "Shahi Paneer ", price: 180, img: "https://images.app.goo.gl/Y5CrfM2bd6F2mkHYA(" },
+      { name: "Paneer Pasanda", price: 180, img: "https://images.app.goo.gl/ALXoGnbscaqfiAF59" },
+      { name: "Kadhai Paneer", price: 210, img: "https://images.app.goo.gl/XCtV13FHcv2SxvXE9" },
+      { name: "Paneer Curry", price: 160, img: "https://images.app.goo.gl/6uKqhHSoUf7UyfKt8" },
+      { name: "Chole", price: 180, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7VkMm32K60L_pnmrAr6KaDMiG5SimlBNQXA&s" },  
+      { name: "Dal Fry", price: 120, img: "https://images.app.goo.gl/gewhVrycGQoYAJuw7" },
+      { name: "Palak Paneer", price: 190, img: "https://images.app.goo.gl/CxxGtTvnwdTJVKf46" },
+      { name: "Malai Kofta", price: 200, img: "https://www.google.com/imgres?imgurl=https%3A%2F%2Fthetableofspice.com%2Fwp-content%2Fuploads%2F2022%2F09%2FMalai-Kofta.jpg&tbnid=SOmA1gdIT_6BiM&vet=1&imgrefurl=https%3A%2F%2Fthetableofspice.com%2Frecipes%2Fmalai-kofta%2F&docid=6_V9G-SO-DmLWM&w=1940&h=2560&hl=en-GB&source=sh%2Fx%2Fim%2Fm1%2F4&kgs=707015d4bdcae0b5" },
+      { name: "Dal Makhni", price: 120, img: "https://images.app.goo.gl/9VfgWedFTx1sefUv5" },
+      { name: "Butter Naan ", price: 30, img: "https://images.app.goo.gl/M8R4xpnzekeiLe6N8" },
+      { name: "Plain Roti", price: 15, img: "https://images.app.goo.gl/TXhKLknbPPeCugAu6" },
+      { name: "Kulcha ", price: 30, img: "https://images.app.goo.gl/uaK2LwKt2CibYqug6" },
+      { name: "Jeera Rice", price: 35, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5lYNJSMPAxGzaaGBL77Fjv0-ONAaVOzRxZQ&s" },
+      { name: "Raita", price: 60, img: "https://images.app.goo.gl/Xvc5G3QebZk38Ast5" },
+      { name: "Litti Chokha", price: 250, img: "https://images.app.goo.gl/7GjyUY5srkPmsmUK8" },
+      { name: "Dal Bati", price: 250, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLetnQTeyzm8StHzS_UpZDjW5m9M1uP4uPxg&s" },
+      ];
+
+    const menuContainer = document.getElementById("menu");
+
+    menuItems.forEach(function (item) {
+      const menuItem = document.createElement("div");
+      menuItem.style.cssText = `
+        background: white; margin: 10px; padding: 15px; border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); display: flex;
+        align-items: center; justify-content: space-between;
+      `;
+      menuItem.innerHTML = `
+        <img src="${item.img}" alt="${item.name}" style="width: 80px; height: 80px; border-radius: 10px;" />
+        <h3>${item.name}</h3>
+        <p>₹${item.price}</p>
+      `;
+      menuContainer.appendChild(menuItem);
+    });
+  </script>
+</body>
+</html>

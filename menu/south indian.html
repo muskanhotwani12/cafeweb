@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Restaurant Menu</title>
+  <style>
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body style="font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%); color: #333; text-align: center; margin: 0; padding: 0;">
+
+  <div id="loader" style="position: fixed; width: 100%; height: 100%; background: white; display: flex; justify-content: center; align-items: center;">
+    <div style="border: 8px solid #f3e5ab; border-top: 8px solid #8b5a2b; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite;"></div>
+  </div>
+
+  <div id="content" style="display: none;">
+    <header style="background-color: #8b5a2b; color: white; padding: 15px;">
+      <h1>Delicious Bites</h1>
+    </header>
+
+    <div style="padding: 20px;">
+      <section id="menu" style="display: flex; flex-direction: column; overflow-y: auto; max-height: 80vh; width: 100%; margin: auto;"></section>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      setTimeout(function () {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("content").style.display = "block";
+      }, 1000);
+    });
+
+    const menuItems = [
+      { name: "White Souce pasta", price: 200, img: "https://www.indianhealthyrecipes.com/wp-content/uploads/2024/04/white-sauce-pasta.jpg" },
+      { name: "Chole Kulche", price: 150, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUVuVHH0XkjGfsu0ZtgvPzpelaypATxmL4HA&s" },
+      { name: "Red souce Pasta", price: 180, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvOBsdOXEwOQToE0g2u-1IJUE77KdwLtgvyA&s" },
+      { name: "Sandwich", price: 120, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFTi3hH11i2UB_8AVLxYzFRoZjjj-2LZczDg&s" },
+      { name: "French Fries", price: 100, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLetnQTeyzm8StHzS_UpZDjW5m9M1uP4uPxg&s" },
+      { name: "Soap", price: 80, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAwNdNZG03VdNqK4_OqqHCxFbyxIF6KgWbcw&s" },
+      { name: "Crispy corn", price: 90, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqJ84ynjiOrCXMOqwlh8vXIdQTM0NFp0Bwe4GtGvZTVtOcbpPWBfCDjIlj4vHdRCMDSeM&usqp=CAU" },
+      { name: "Pakora PLatter", price: 200, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTte2epWjVQK3X8av_81-7vQWeIMDuk7IEYOQ&s" },
+      { name: "Chole Bhature", price: 150, img: "https://i.pinimg.com/736x/80/3f/f0/803ff029867e021b7b4193f58e1c4ad1.jpg" },
+      { name: "Pav Bhaji", price: 150, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH88wG8X4OUGuMDJYnh8RhGdu4KBsqcgSThw&s" }
+    ];
+
+    const menuContainer = document.getElementById("menu");
+
+    menuItems.forEach(function (item) {
+      const menuItem = document.createElement("div");
+      menuItem.style.cssText = `
+        background: white; margin: 10px; padding: 15px; border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); display: flex;
+        align-items: center; justify-content: space-between;
+      `;
+      menuItem.innerHTML = `
+        <img src="${item.img}" alt="${item.name}" style="width: 80px; height: 80px; border-radius: 10px;" />
+        <h3>${item.name}</h3>
+        <p>₹${item.price}</p>
+      `;
+      menuContainer.appendChild(menuItem);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Restaurant Menu</title>
+  <style>
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body style="font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%); color: #333; text-align: center; margin: 0; padding: 0;">
+
+  <div id="loader" style="position: fixed; width: 100%; height: 100%; background: white; display: flex; justify-content: center; align-items: center;">
+    <div style="border: 8px solid #f3e5ab; border-top: 8px solid #8b5a2b; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite;"></div>
+  </div>
+
+  <div id="content" style="display: none;">
+    <header style="background-color: #8b5a2b; color: white; padding: 15px;">
+      <h1>Delicious Bites</h1>
+    </header>
+
+    <div style="padding: 20px;">
+      <section id="menu" style="display: flex; flex-direction: column; overflow-y: auto; max-height: 80vh; width: 100%; margin: auto;"></section>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      setTimeout(function () {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("content").style.display = "block";
+      }, 1000);
+    });
+
+    const menuItems = [
+      { name: "Chocolate Cake ", price: 200, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTISptptNMXJPRUo9UG0OwXm6XSY4bFjrHaiQ&s" },
+      { name: "Vanila chips Cake", price: 250, img: "https://merakcakes.com/cdn/shop/files/VanillaChocoChipsCake-3.jpg?v=1713853700" },
+      { name: "Black Forest Cake", price: 280, img: "https://www.greatestbakery.in/wp-content/uploads/2023/05/Black-Forest-Elite-Cake.jpg" },
+      { name: "Red valvet cake ", price: 300, img: "https://pyramideats.com/cdn/shop/files/EgglessRedVelvetCake1.webp?v=1686747136&width=900" },
+      { name: "Fruit cake", price: 250, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiN9I_mfXgJzgz2GSten7tPDQgpxBr0i6nLw&s" },
+      { name: "Strawberry cake", price: 280, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqSZ5RK2EdTobgHpSmz2NPy-rt3etiBpAsgw&s" },
+      { name: "Coconut Cake", price: 290, img: "https://www.oliviascuisine.com/wp-content/uploads/2016/04/Brazilian-Moist-Coconut-Cake-480x480.jpg" },
+      { name: "Caremel Cake", price: 220, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwF48NWbM5OcrpXN2NJahJ0DmeGpR6f-NJtQ&s" },
+      { name: "Chocolate Ice cream ", price: 90, img: "https://www.recipessimple.com/wp-content/uploads/2023/08/Chocolate-Brownie-Ice-Cream-Recipe.jpg" },
+      { name: "Vanila Ice Cream", price: 70, img: "https://vaya.in/recipes/wp-content/uploads/2018/12/Vanilla-Ice-Cream.jpg" },
+      { name: "Strawberry Ice cream", price: 80, img: "https://www.milkmaid.in/sites/default/files/2023-07/Strawberry-Ice-Cream-335x300_2_11zon_11zon.jpeg" },
+      { name: "Mava Kulfi ", price: 30, img: "https://5.imimg.com/data5/IOS/Default/2023/10/349746694/OB/SP/DX/12203761/product-jpeg-500x500.png" },
+      { name: "strawberry kulfi", price: 65, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3bL7YmnIzKs28GoAfjJ8RATTJRfOqFBZWUA&s" },
+    ];
+
+    const menuContainer = document.getElementById("menu");
+
+    menuItems.forEach(function (item) {
+      const menuItem = document.createElement("div");
+      menuItem.style.cssText = `
+        background: white; margin: 10px; padding: 15px; border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); display: flex;
+        align-items: center; justify-content: space-between;
+      `;
+      menuItem.innerHTML = `
+        <img src="${item.img}" alt="${item.name}" style="width: 80px; height: 80px; border-radius: 10px;" />
+        <h3>${item.name}</h3>
+        <p>₹${item.price}</p>
+      `;
+      menuContainer.appendChild(menuItem);
+    });
+  </script>
+</body>
+</html>

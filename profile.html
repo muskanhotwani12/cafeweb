@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile</title>
+    <link rel="stylesheet" href="profile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">MyProfile</div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li class="settings-menu">
+                    <a href="#profile-section">Settings</a>
+                    <div class="settings-dropdown">
+                        <a href="#" onclick="toggleEditMode()">Edit Profile</a>
+                        <a href="#">Order History</a>
+                        <a href="#">Account Settings</a>
+                    </div>
+                </li>
+                <li class="order-now">
+                    <a href="#">Order Now</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="profile-container">
+        <section class="profile-section">
+            <div class="profile-picture">
+                <img id="profile-img" src="https://via.placeholder.com/150" alt="Profile Picture">
+                <div class="upload-btn">
+                    <input type="file" id="image-upload" accept="image/*">
+                    <label for="image-upload">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                        </svg>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="profile-details">
+                <h1>My Profile</h1>
+                
+                <div id="profile-view">
+                    <div class="profile-info">
+                        <p><strong>Name:</strong> <span id="view-name"></span></p>
+                        <p><strong>Phone:</strong> <span id="view-phone"></span></p>
+                        <p><strong>Email:</strong> <span id="view-email"></span></p>
+                        <p><strong>Address:</strong> <span id="view-address"></span></p>
+                    </div>
+                </div>
+
+                <form id="profile-form" style="display:none;">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" placeholder="Enter your name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" placeholder="Enter your phone number">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Enter your email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <textarea id="address" placeholder="Enter your address"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="save-btn">Save Changes</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2023 MyProfile. All rights reserved.</p>
+    </footer>
+
+    <script src="profile.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Restaurant Menu</title>
+  <style>
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body style="font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%); color: #333; text-align: center; margin: 0; padding: 0;">
+
+  <div id="loader" style="position: fixed; width: 100%; height: 100%; background: white; display: flex; justify-content: center; align-items: center;">
+    <div style="border: 8px solid #f3e5ab; border-top: 8px solid #8b5a2b; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite;"></div>
+  </div>
+
+  <div id="content" style="display: none;">
+    <header style="background-color: #8b5a2b; color: white; padding: 15px;">
+      <h1>Delicious Bites</h1>
+    </header>
+
+    <div style="padding: 20px;">
+      <section id="menu" style="display: flex; flex-direction: column; overflow-y: auto; max-height: 80vh; width: 100%; margin: auto;"></section>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      setTimeout(function () {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("content").style.display = "block";
+      }, 1000);
+    });
+
+    const menuItems = [
+      { name: "Waffle", price: 200, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4cLpnOcgsMOvN9LhxkPVQJkG0IShefhrisQ&s" },
+      { name: "Brownie", price: 150, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc_UcmfRGHL22slthg9YlTqEgYOZC05Ak4cg&s" },
+      { name: "Muffins", price: 180, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqiGYT9gF115Ifvy2eBiPiP3nc-laGzXwhmg&s" },
+      { name: "Custard", price: 120, img: "https://www.indianhealthyrecipes.com/wp-content/uploads/2021/05/fruit-custard-recipe.jpg" },
+      { name: "Ras Malai", price: 100, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRe_iE1P5sbsw7izWdPDzEIn-R8tK-3yRbLA&s" },
+      { name: "Gulab jamun", price: 80, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3aJrkMZfZWaRkqQu36Y9TBzYlCrkKHvy7mw&s" },
+      { name: "Jalebi", price: 90, img: "https://thumbs.dreamstime.com/b/indian-sweet-jalebi-traditional-dessert-india-77486391.jpg" },
+      { name: "Rabdi", price: 200, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVm0SVG4KEAU1p59aEZlN2cKEyRm38eDf5NA&s" },
+      { name: "Imarti", price: 70, img: "https://blessmyfoodbypayal.com/wp-content/uploads/2021/10/1634493923024.jpg" },
+      { name: "kheer", price: 120, img: "https://www.honeywhatscooking.com/wp-content/uploads/2020/10/Rice-Kheer-Indian-Rice-Pudding44.jpg" }
+    ];
+
+    const menuContainer = document.getElementById("menu");
+
+    menuItems.forEach(function (item) {
+      const menuItem = document.createElement("div");
+      menuItem.style.cssText = `
+        background: white; margin: 10px; padding: 15px; border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); display: flex;
+        align-items: center; justify-content: space-between;
+      `;
+      menuItem.innerHTML = `
+        <img src="${item.img}" alt="${item.name}" style="width: 80px; height: 80px; border-radius: 10px;" />
+        <h3>${item.name}</h3>
+        <p>₹${item.price}</p>
+      `;
+      menuContainer.appendChild(menuItem);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,547 @@
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    text-align: center;
+    scroll-behavior : smooth;
+}
+
+/* Header */
+header {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 15px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+    white-space: nowrap;
+    min-width: 100px;
+    text-align: center;
+    
+    display: block;
+    margin: 0 auto; /* Horizontally center */
+}
+
+
+/* Navigation Bar */
+nav {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+/* Menu Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.nav-links li {
+    list-style: none;
+    margin-right: 20px;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+/* Login & Signup Buttons - Shifted to Right */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Adjusted spacing between items on the right */
+    margin-right: 30px; /* Added margin to align properly */
+}
+
+/* Login Button */
+.nav-btn {
+    padding: 10px 20px;
+    background: rgb(73, 0, 0);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: 0.3s;
+    white-space: nowrap;
+    min-width: 100px;
+    text-align: center;
+}
+
+.nav-btn:hover {
+    background: rgb(190, 109, 109);
+}
+
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background: url('https://t4.ftcdn.net/jpg/02/92/20/37/360_F_292203735_CSsyqyS6A4Z9Czd4Msf7qZEhoxjpzZl1.jpg') no-repeat center center/cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin: 0;
+}
+
+.hero p {
+    font-size: 1.5em;
+}
+
+.btn {
+    background: rgb(87, 13, 13);
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    border-radius: 5px;
+    margin-top: 15px;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: rgb(190, 109, 109);
+}
+
+/* Notification Bar */
+.notification {
+    position: fixed;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1em;
+    display: none;
+    z-index: 1000;
+    transition: opacity 0.5s ease-in-out;
+}
+
+
+
+
+
+/* Virtual Tour */
+.virtual-tour {
+    text-align: center;
+    padding: 50px;
+    background-color: #f8f8f8;
+}
+
+/* Booking */
+.booking {
+    background: url('https://i.pinimg.com/736x/9f/20/e5/9f20e5a7e4e84351af4ee016b28442b4.jpg') no-repeat center center/cover;
+    padding: 50px;
+    text-align: center;
+    color: white;
+}
+
+.booking h2 {
+    font-size: 2em;
+}
+
+.booking form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.booking input,
+.booking button {
+    padding: 10px;
+    width: 80%;
+    max-width: 400px;
+    margin: 10px 0;
+}
+
+.booking button {
+    background: rgb(97, 37, 37);
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+.booking button:hover {
+    background: rgb(163, 133, 133);
+    color: white;
+}
+
+/* Voice Ordering */
+#voice-order {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+#voice-btn {
+    background-color: rgb(83, 0, 0);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#order-result {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+/* Rating */
+.rating {
+    background: #fff3e0;
+    padding: 50px;
+    text-align: center;
+}
+
+.star-rating {
+    font-size: 2em;
+    color: #ccc;
+    cursor: pointer;
+}
+
+.star {
+    transition: color 0.3s;
+}
+
+.star:hover,
+.star.active {
+    color: #ff9800;
+}
+
+#selected-rating {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+button {
+    background: rgb(73, 0, 0);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background: rgb(190, 109, 109);
+}
+
+/* Order Tracking */
+.order-tracking {
+    text-align: center;
+    padding: 20px;
+}
+
+/* Reviews */
+.reviews {
+    padding: 50px 20px;
+    background: #f4f4f4;
+}
+
+/* Contact */
+.contact {
+    padding: 50px 20px;
+    background: #222;
+    color: white;
+}
+
+.social-icons a {
+    color: #ff6f61;
+    text-decoration: none;
+}
+
+/* Footer */
+footer {
+    background: black;
+    color: white;
+    padding: 10px;
+}
+
+/* Dropdown Button */
+.dropbtn {
+    background-color: rgb(83,0,0);
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+}
+
+/* Dropdown Container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    text-align: left;
+    padding: 10px;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Dropdown Links */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+.profile-pic {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    max-width: 90%; /* Prevents overflow */
+    max-height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 0 8px rgba(0,0,0,0.2);
+    gap: 20px; /* Adjusted spacing between items on the right */
+    margin-right: 38px;
+}
+
+
+.offers-section {
+    padding: 16px;
+    background-color: white;
+    text-align: center;
+}
+
+.offers-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: rgb(73, 0, 0);
+}
+
+.offers-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 10px 0;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    justify-content: flex-start;
+    scroll-behavior: smooth;
+}
+
+.offer-card {
+    flex: 0 0 auto;
+    min-width: 250px;
+    background-color: #e6f0ff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    scroll-snap-align: center;
+    transition: transform 0.3s ease;
+    text-align: left;
+}
+
+.offer-card:hover {
+    transform: scale(1.05);
+}
+
+.offer-title {
+    font-size: 16px;
+    color: #0052cc;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.offer-desc {
+    font-size: 14px;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+.offer-btn {
+    background-color: #0052cc;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 13px;
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    transition: background 0.3s ease;
+}
+
+.offer-btn:hover {
+    background-color: #003f99;
+}
+
+/* Hide scrollbar */
+.offers-container::-webkit-scrollbar {
+    display: none;
+}
+.promo-code {
+    margin-top: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .offers-section h2 {
+    color: rgb(73, 0, 0); 
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+.customization-section {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #f8f8f8;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .customization-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #222;
+  }
+  
+  .custom-box {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .custom-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 17px;
+    color: #444;
+  }
+  
+  .custom-item.textarea {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    resize: vertical;
+  }
+  
+  /* Toggle Switch */
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 28px;
+  }
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0;
+    right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+  }
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 22px; width: 22px;
+    left: 3px; bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  input:checked + .slider {
+    background-color: #4caf50;
+  }
+  input:checked + .slider:before {
+    transform: translateX(22px);
+  }
+  
+  button {
+    padding: 12px;
+    font-size: 16px;
+    background-color: rgb(73, 0, 0);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: rgb(190, 109, 109);
+  }
+  
+  #customization-message {
+    margin-top: 15px;
+    font-weight: bold;
+    text-align: center;
+    color: #2e7d32;
+  }

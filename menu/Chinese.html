@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Restaurant Menu</title>
+  <style>
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body style="font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%); color: #333; text-align: center; margin: 0; padding: 0;">
+
+  <div id="loader" style="position: fixed; width: 100%; height: 100%; background: white; display: flex; justify-content: center; align-items: center;">
+    <div style="border: 8px solid #f3e5ab; border-top: 8px solid #8b5a2b; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite;"></div>
+  </div>
+
+  <div id="content" style="display: none;">
+    <header style="background-color: #8b5a2b; color: white; padding: 15px;">
+      <h1>Delicious Bites</h1>
+    </header>
+
+    <div style="padding: 20px;">
+      <section id="menu" style="display: flex; flex-direction: column; overflow-y: auto; max-height: 80vh; width: 100%; margin: auto;"></section>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      setTimeout(function () {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("content").style.display = "block";
+      }, 1000);
+    });
+
+    const menuItems = [
+      { name: "Veg noodles", price: 120, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRr5j9u7DUHnQEKv5i4L9JT2c1vrYAKlqdRvw&s" },
+      { name: "Manchurian noodles", price: 150, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-lz7LXRSdlhyCTYmuTsb7eVzE1IecTSmskE5wmrRVV17Izx4QaYu-jJw_Zyg-SvxVSXk&usqp=CAU" },
+      { name: "Schezwan noodles", price: 180, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCA5Swv1yc0McEmIfxYE0Yj7oxbvcaPZvcsw&s" },
+      { name: "Egg noodles", price: 160, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRh_Z1fUOrdqBvExYJjgNqymwmY7Gz6LoO4qXOn7Bhx7FI8PMicppZ8FR0C7P8xwMRFAC0&usqp=CAU" },
+      { name: "Chiken Lollipop", price: 250, img: "https://lh3.googleusercontent.com/proxy/3M5fKmqCsyKjF6vxj75sFkYj29l2DoKJWbBFGph1eBeygd59_flsuVtof6fZVbiO_sB4a0Wz63Nrb0qKLt1q-8zg-t5LYWcBQA" },
+      { name: "Paneer Schezwan noodles", price: 230, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTK2RmIFPEOqd5PXSB3Z4Rx5t5XH-sAxtpb0w&s" },
+      { name: "Chili Paneer", price: 249, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQE8A_7IhSE6cgLTqi2Dna3GksICuhZSaavIA&s" },
+      { name: "Paneer noodles ", price: 200, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRr9loQVxZjGp2bYVeUrwsbjARLqavr04AqrQ&s" },
+      { name: "Manchurian grevy", price: 160, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8b4ErqncyO8aHN_MR7eS7LJMgAaBJfotST4gz_X5qaK2eV3OHPC9xgBcphPJN8uKckHI&usqp=CAU" },
+      { name: "Dry Manchurian", price: 180, img: "https://www.shutterstock.com/image-photo/veg-manchurian-vegetable-balls-dipped-260nw-2490980725.jpg" }
+    ];
+
+    const menuContainer = document.getElementById("menu");
+
+    menuItems.forEach(function (item) {
+      const menuItem = document.createElement("div");
+      menuItem.style.cssText = `
+        background: white; margin: 10px; padding: 15px; border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); display: flex;
+        align-items: center; justify-content: space-between;
+      `;
+      menuItem.innerHTML = `
+        <img src="${item.img}" alt="${item.name}" style="width: 80px; height: 80px; border-radius: 10px;" />
+        <h3>${item.name}</h3>
+        <p>₹${item.price}</p>
+      `;
+      menuContainer.appendChild(menuItem);
+    });
+  </script>
+</body>
+</html>

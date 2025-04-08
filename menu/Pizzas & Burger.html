@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Restaurant Menu</title>
+  <style>
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body style="font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%); color: #333; text-align: center; margin: 0; padding: 0;">
+
+  <div id="loader" style="position: fixed; width: 100%; height: 100%; background: white; display: flex; justify-content: center; align-items: center;">
+    <div style="border: 8px solid #f3e5ab; border-top: 8px solid #8b5a2b; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite;"></div>
+  </div>
+
+  <div id="content" style="display: none;">
+    <header style="background-color: #8b5a2b; color: white; padding: 15px;">
+      <h1>Delicious Bites</h1>
+    </header>
+
+    <div style="padding: 20px;">
+      <section id="menu" style="display: flex; flex-direction: column; overflow-y: auto; max-height: 80vh; width: 100%; margin: auto;"></section>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      setTimeout(function () {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("content").style.display = "block";
+      }, 1000);
+    });
+
+    const menuItems = [
+      { name: "Margherita Pizza", price: 165, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqLEoGo3bHJYJEpRIaveeChxuCkXPoLk3RNg&s" },
+      { name: " Corn Mushroom Pizza", price: 180, img: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/tandoori-mushroom-&-sweet-corn-pan-medium.49a1287d1cece07781c106e552979fa2.1.jpg" },
+      { name: "Golden Corn Pizza", price: 120, img: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/corn.f8baa08ad7f607f1de30f96bb9245b50.1.jpg" },
+      { name: "Cheese Volcano pizza", price: 309, img: "https://www.dominos.com.sg/ManagedAssets/SG/product/PXVH/SG_PXVH_en_hero_12860.jpg?v-1810547859" },
+      { name: "Cheese Burst Pizza", price: 250, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLD7YNpIfnu6J_kTPKQfCKL3j1xSGNhlosiVmmNgEi6luUh56dIAqcZD2np0eB0lsRI3A&usqp=CAU" },
+      { name: "Aloo Tikki Burger", price: 90, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIYbfVvQ8tlU0a0QcebNp8zYyXUggQFDm6xQ&s" },
+      { name: "Classic Non Veg Burger", price: 159, img: "https://c.ndtvimg.com/2022-04/k9toe6b8_burger_625x300_23_April_22.jpg?im=FeatureCrop,algorithm=dnn,width=1200,height=675" },
+      { name: "Taco Mexicana Veg", price: 169, img: "https://www.dominos.co.in//files/items/Main_Menu-VG.jpg" },
+      { name: "Spicy Chken Pops", price: 109, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDEk5WkPYDReC0xQQqvmypeUXJWr_tGJGRpw&s" }
+    ];
+
+    const menuContainer = document.getElementById("menu");
+
+    menuItems.forEach(function (item) {
+      const menuItem = document.createElement("div");
+      menuItem.style.cssText = `
+        background: white; margin: 10px; padding: 15px; border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); display: flex;
+        align-items: center; justify-content: space-between;
+      `;
+      menuItem.innerHTML = `
+        <img src="${item.img}" alt="${item.name}" style="width: 80px; height: 80px; border-radius: 10px;" />
+        <h3>${item.name}</h3>
+        <p>₹${item.price}</p>
+      `;
+      menuContainer.appendChild(menuItem);
+    });
+  </script>
+</body>
+</html>

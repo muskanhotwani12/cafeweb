@@ -1,0 +1,88 @@
+header h1 {
+    text-align: center;
+    font-size: 3em;
+    margin: 10px 0 40px 0;
+    color:  rgb(73, 0, 0);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Changed from height to min-height */
+    background-color: #ffffff;
+    flex-direction: column;
+    padding: 20px; /* Add padding for small screens */
+    box-sizing: border-box;
+}
+
+.menu-container {
+   
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+        margin-bottom: 20px;
+    
+}
+
+.menu-item {
+    text-align: center;
+    cursor: pointer;
+}
+
+.menu-item img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #ddd;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.menu-item img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px  rgb(73, 0, 0);;
+}
+
+
+
+.menu-item p {
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 16px;
+}
+.order-btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: rgb(73, 0, 0);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: 0.3s;
+    white-space: nowrap;
+    min-width: 50px;
+    text-align: center;
+
+    /* Add these two lines: */
+    display: inline-block;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+
+
+}
+
+
+
+.order-btn:hover {
+    background-color: #b30000;
+}

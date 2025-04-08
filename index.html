@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Café Delish</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-left">
+                <div class="dropdown">
+                    <button class="dropbtn">☰</button>
+                    <div class="dropdown-content">
+                        <a href="#menu">Menu</a>
+                        <a href="#offers">Offers</a>
+                        <a href="#virtual-tour">Virtual Tour</a>
+                        <a href="book_table.html">Booking</a>
+                        <a href="order.html">Order Now</a>
+                        <a href="#customization">Customize Order</a>
+                        <a href="#order-tracking">Track Order</a>
+                        <a href="#reviews">Reviews</a>
+                        <a href="#rating">Rate Us</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                </div>
+            </div>
+            <div class="logo">Café Delish</div>
+            <div class="nav-right">
+                <button class="nav-btn" onclick="location.href='login.html?form=login'">Login</button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Welcome to Café Delish</h1>
+        <p>Experience gourmet flavors with a modern touch</p>
+        <a href="menu.html" class="btn">Explore Menu</a>
+    </section>
+
+
+    <!-- 🌟 Interactive Menu -->
+    <section id="menu" class="menu">
+        <h2>Our Special Dishes</h2>
+        <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: nowrap; overflow-x: auto;">
+            <div onclick="window.location.href='menu/pure_veg.html'" style="text-align: center; cursor: pointer;">
+                <img src="https://media.istockphoto.com/id/453127701/photo/color-wheel.jpg?s=612x612&w=0&k=20&c=DVRmyMjEbhKoW6F08Mhay3xSeHgv_aF7AuAP7HJt760=" alt="Pure Veg" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid #ddd; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <p style="margin-top: 10px; font-weight: bold; font-size: 16px;">Pure Veg</p>
+            </div>
+            <div onclick="window.location.href='menu/paratha.html'" style="text-align: center; cursor: pointer;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8LJOai2NfFOX2OZf0n-T8E2qoYARxVgPU6w&s" alt="Paratha" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid #ddd; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <p style="margin-top: 10px; font-weight: bold; font-size: 16px;">Paratha</p>
+            </div>
+            <div onclick="window.location.href='menu/Chinese.html'" style="text-align: center; cursor: pointer;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOPnSFN9820CtG9q60CKs71gyTPOpX4B8N_tzA3QaeajAHynamXQai1DNFetovXM-UW6c&usqp=CAU" alt="Chinese" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid #ddd; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <p style="margin-top: 10px; font-weight: bold; font-size: 16px;">Chinese</p>
+            </div>
+            <div onclick="window.location.href='menu/South indian.html'" style="text-align: center; cursor: pointer;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-ugS455I9k9aFVTNfxtjt6dfGiwypJLmf_ukNJuwj9wUEq2gP_OabkFh2gjbwOcQjzWo&usqp=CAU" alt="South Indian" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid #ddd; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <p style="margin-top: 10px; font-weight: bold; font-size: 16px;">South Indian</p>
+            </div>
+            <div onclick="window.location.href='menu/Chowpatty Corner.html'" style="text-align: center; cursor: pointer;">
+                <img src="https://lh3.googleusercontent.com/5vxvupOz2O3MhHPV_ldrfi0J_nTXYjVpEB6PLce4QFFKK2RpBYc-TQnwst3eu4v1jFagHjuVviW5mT9-LpImLfow0V8=w300-rw" alt="Chowpatty Corner" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid #ddd; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <p style="margin-top: 10px; font-weight: bold; font-size: 16px;">Chowpatty Corner</p>
+            </div>
+            <div onclick="window.location.href='menu/Biryani.html'" style="text-align: center; cursor: pointer;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9G7J-no4Lf04oLd_26Y-zJKgmBdROSVhTjA&s" alt="Biryani" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid #ddd; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <p style="margin-top: 10px; font-weight: bold; font-size: 16px;">Biryani</p>
+            </div>
+        </div>
+        
+        <div class="menu-scroll">
+        <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: nowrap; overflow-x: auto; padding: 20px;">
+            <div onclick="window.location.href='menu/Dessert.html'" style="text-align: center; cursor: pointer;">
+                <img src="https://images.ctfassets.net/0dkgxhks0leg/2W0e0i39df3qb9O05tsm8W/877bbaef4e6158eef162496144faf2f5/TF_20FW_22_20Dessert_20Collection_498.jpg" alt="Dessert" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid #ddd;">
+                <p style="margin-top: 10px; font-weight: bold;">Dessert</p>
+            </div>
+            <div onclick="window.location.href='menu/cake & Ice cream.html'" style="text-align: center; cursor: pointer;">
+                <img src="https://i0.wp.com/zoebakes.com/wp-content/uploads/2018/01/Heart-Cake-ZoeBakes-11-of-5.jpg?resize=700%2C1050&ssl=1" alt="Cakes" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid #ddd;">
+                <p style="margin-top: 10px; font-weight: bold;">Cakes & Ice Creams</p>
+            </div>
+            <div onclick="window.location.href='menu/Cold drinks & Shakes.html'" style="text-align: center; cursor: pointer;">
+                <img src="https://m.media-amazon.com/images/I/51v1kwJZfbL.jpg" alt="Cold drinks & Shakes" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid #ddd;">
+                <p style="margin-top: 10px; font-weight: bold;">Cold drinks & Shakes</p>
+            </div>
+            <div onclick="window.location.href='menu/Tea & coffee.html'" style="text-align: center; cursor: pointer;">
+                <img src="https://static.vecteezy.com/system/resources/thumbnails/025/282/026/small/stock-of-mix-a-cup-coffee-latte-more-motive-top-view-foodgraphy-generative-ai-photo.jpg" alt="Tea & coffee" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid #ddd;">
+                <p style="margin-top: 10px; font-weight: bold;">Tea & Coffee</p>
+            </div>
+            <div onclick="window.location.href='menu/Pizzas & Burger.html'" style="text-align: center; cursor: pointer;">
+                <img src="https://static.vecteezy.com/system/resources/previews/050/750/903/non_2x/delicious-pizza-and-burger-combo-served-on-wooden-background-photo.jpg" alt="Pizzas & Burger" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid #ddd;">
+                <p style="margin-top: 10px; font-weight: bold;">Pizzas & Burger</p>
+            </div>
+            <div onclick="window.location.href='menu/Falahari Special.html'" style="text-align: center; cursor: pointer;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9yzQl-3dlt-YGF33nTvkZggnVLEpr8LTSe1mtJUWL_VPCyCdOWlWu9Vg7sY8MbIotwlY&usqp=CAU" alt="Falahari Special" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid #ddd;">
+                <p style="margin-top: 10px; font-weight: bold;">Falahari Special</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="offers-section">
+        <h2>Special Offers</h2>
+        <div class="offers-container">
+      
+          <div class="offer-card">
+            <div class="offer-title">Get ₹300 OFF</div>
+            <div class="offer-desc">On orders above ₹2000</div>
+            <div class="promo-code">Code: <strong>BIG300</strong></div>
+          </div>
+      
+          <div class="offer-card" style="background-color:#e8fff1;">
+            <div class="offer-title">Get ₹30 OFF</div>
+            <div class="offer-desc">On orders above ₹200</div>
+            <div class="promo-code" style="color: #28a745;">Code: <strong>GREEN30</strong></div>
+          </div>
+      
+          <div class="offer-card" style="background-color:#fff3cd;">
+            <div class="offer-title">Free Delivery</div>
+            <div class="offer-desc">On orders above ₹149</div>
+            <div class="promo-code" style="color: #ffc107;">Code: <strong>FREEDL</strong></div>
+          </div>
+          <div class="offer-card" style="background-color:#f0f8ff;">
+            <div class="offer-title">Flat 10% OFF</div>
+            <div class="offer-desc">On first order</div>
+            <div class="promo-code" style="color: #007bff;">Code: <strong>WELCOME10</strong></div>
+          </div>
+      
+          <div class="offer-card" style="background-color:#fff0f5;">
+            <div class="offer-title">₹100 Cashback</div>
+            <div class="offer-desc">On prepaid orders above ₹1000</div>
+            <div class="promo-code" style="color: #d63384;">Code: <strong>CASH100</strong></div>
+          </div>
+      
+          <div class="offer-card" style="background-color:#f9f9f9;">
+            <div class="offer-title">Buy 1 Get 1 Free</div>
+            <div class="offer-desc">On select items</div>
+            <div class="promo-code" style="color: #343a40;">Code: <strong>BOGO</strong></div>
+          </div>
+        </div>
+      </div>
+      
+      
+    
+    <!-- 🎥 Virtual Tour (Updated) -->
+<section id="virtual-tour" class="virtual-tour">
+    <h2>Explore Our Café in 360°</h2>
+    <div class="tour-container">
+        <iframe src="https://your-360-tour-link.com" width="100%" height="500" allowfullscreen></iframe>
+    </div>
+</section>
+
+
+
+    <!-- 🎤 Voice Ordering System -->
+    <section id="voice-order">
+        <h2>Hands-Free Ordering 🎙</h2>
+        <button id="voice-btn" onclick="toggleVoiceOrder()">🎤 Speak Now</button>
+        <p id="order-result">Say your order...</p>
+    </section>
+    
+    
+
+    <!-- 🍽 Food Customization -->
+    <section id="customization" class="customization-section">
+        <h2>✨ Customize Your Order</h2>
+      
+        <div class="custom-box">
+      
+          <div class="custom-item">
+            <span>🧀 Extra Cheese</span>
+            <label class="switch">
+              <input type="checkbox" value="Extra Cheese" class="custom-option">
+              <span class="slider round"></span>
+            </label>
+          </div>
+      
+          <div class="custom-item">
+            <span>🧅 No Onions</span>
+            <label class="switch">
+              <input type="checkbox" value="No Onions" class="custom-option">
+              <span class="slider round"></span>
+            </label>
+          </div>
+      
+          <div class="custom-item">
+            <span>🌾 Gluten-Free</span>
+            <label class="switch">
+              <input type="checkbox" value="Gluten-Free" class="custom-option">
+              <span class="slider round"></span>
+            </label>
+          </div>
+      
+          <div class="custom-item">
+            <span>🔥 Spicy Level</span>
+            <select id="spice-level">
+              <option value="Mild">🌶 Mild</option>
+              <option value="Medium">🌶🌶 Medium</option>
+              <option value="Hot">🌶🌶🌶 Hot</option>
+            </select>
+          </div>
+      
+          <div class="custom-item textarea">
+            <label for="special-note">📝 Special Instructions:</label>
+            <textarea id="special-note" rows="3" placeholder="Add any special notes..."></textarea>
+          </div>
+      
+          <button onclick="submitCustomization()">✅ Submit</button>
+          <p id="customization-message"></p>
+        </div>
+      </section>
+
+    
+
+    <!-- 🚚 Order Tracking -->
+    <section id="order-tracking" class="tracking-section">
+        <h2>📦 Track Your Order</h2>
+        <input type="text" placeholder="Enter Order ID" id="order-id-input">
+        <button onclick="trackOrder()">Track</button>
+        <p id="tracking-result"></p>
+      </section>
+      
+
+
+    <section id="rating" class="rating">
+        <h2>Rate Us</h2>
+        <div class="star-rating">
+            <span class="star" data-value="1">★</span>
+            <span class="star" data-value="2">★</span>
+            <span class="star" data-value="3">★</span>
+            <span class="star" data-value="4">★</span>
+            <span class="star" data-value="5">★</span>
+        </div>
+        <p id="selected-rating">Your rating: ★★★★☆</p>
+        <button onclick="submitRating()">Submit Rating</button>
+    </section>
+
+
+  <section id="reviews" class="reviews">
+    <h2>What Our Customers Say</h2>
+    <div class="review-container">
+        <div class="review">
+            <img src="https://embedsocial.com/wp-content/uploads/2024/07/restaurant-reviews-examples.jpg" width="15%" alt="Customer 1">
+            <p>"Amazing food and great ambiance! 10/10 would recommend!"</p>
+            <h4>- Sarah Johnson ⭐⭐⭐⭐⭐</h4>
+        </div>
+        <div class="review">
+            <img src="https://embedsocial.com/wp-content/uploads/2024/06/restaurant-review-example-great-price.jpg" width="15%"alt="Customer 2">
+            <p>"The steak was cooked to perfection. Best café in town!"</p>
+            <h4>- Mark Williams ⭐⭐⭐⭐</h4>
+        </div>
+    </div>
+</section>
+
+        <section id="contact" class="contact">
+            <h2>Contact Us</h2>
+            <h3>📍 Location: 123 Café Street, New York</h3>
+            <p>📞 Phone: (123) 456-7890</p>
+            <p>📧 Email: contact@cafedelish.com</p>
+            <div class="social-icons">
+                <a href="#">Facebook</a> | <a  bhref="#">Instagram</a> | <a href="#">Twitter</a>
+            </div>
+        </section>
+
+    <footer>
+        <p>© 2025 Café Delish | Designed with ♥</p>
+    </footer>
+</body>
+</html>

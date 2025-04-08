@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Restaurant Menu with Dropdown</title>
+  <style>
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+    }
+    .container {
+   display: flex;
+   justify-content: center; /* Center horizontally */
+   gap: 20px;               /* Space between menu and cart */
+   padding: 20px;
+   }
+
+    header {
+      background-color: #8b5a2b;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+    .container {
+      display: flex;
+      padding: 20px;
+      justify-content: space-between;
+      
+    }
+    .menu-section {
+      width: 70%;
+    }
+    .dropdown {
+      background: white;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .dropdown-btn {
+      padding: 15px;
+      font-size: 18px;
+      background-color: #8b5a2b;
+      cursor: pointer;
+      text-align: left;
+      border: none;
+      width: 100%;
+      color: white;
+    }
+    .dropdown-content {
+      display: none;
+      flex-direction: column;
+    }
+    .item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 15px;
+      border-top: 1px solid #ddd;
+    }
+    .item img {
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+      object-fit: cover;
+      display: block;
+      left: 40%; 
+      right: 60%;
+      align-items: center;
+      
+}
+
+.item img:hover {
+  transform: scale(1.1);
+  transition: 0.3s ease;
+}
+.popup {
+  display: none;
+  z-index: 1000;
+  font-size: 20px;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+}
+
+
+   .cart {
+      background: white;
+      padding: 15px;
+      width: 25%;
+      border-radius: 10px;
+      position: sticky;
+      top: 20px;
+      height: fit-content;
+    }
+    button {
+      background-color: #8b5a2b;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      cursor: pointer;
+      margin-left: 10px;
+      align-items: last baseline;
+    }
+    .popup {
+      display: none;
+      position: fixed;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #333;
+      color: white;
+      padding: 20px;
+      border-radius: 8px;
+      
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Delicious Bites</h1>
+  </header>
+
+  <div class="container">
+    <div class="menu-section">
+      <div class="dropdown" onclick="toggleDropdown('cakes')">
+        <h2>🎂 Cakes</h2>
+        <div id="cakes" class="dropdown-content"></div>
+      </div>
+  
+      <div class="dropdown" onclick="toggleDropdown('pizzas')">
+        <h2>🍕 Pizza/Burger</h2>
+        <div id="pizzas" class="dropdown-content"></div>
+      </div>
+  
+      <div class="dropdown" onclick="toggleDropdown('biryani')">
+        <h2>🍗 Biryani</h2>
+        <div id="biryani" class="dropdown-content"></div>
+      </div>
+  
+      <div class="dropdown" onclick="toggleDropdown('chinese')">
+        <h2>🥡 Chinese</h2>
+        <div id="chinese" class="dropdown-content"></div>
+      </div>
+  
+      <div class="dropdown" onclick="toggleDropdown('chowpatty')">
+        <h2>🍟 Chowpatty</h2>
+        <div id="chowpatty" class="dropdown-content"></div>
+      </div>
+  
+      <div class="dropdown" onclick="toggleDropdown('drinks')">
+        <h2>🥤 Drinks</h2>
+        <div id="drinks" class="dropdown-content"></div>
+      </div>
+  
+      <div class="dropdown" onclick="toggleDropdown('south')">
+        <h2>🍛 South Indian</h2>
+        <div id="south" class="dropdown-content"></div>
+      </div>
+  
+      <div class="dropdown" onclick="toggleDropdown('falahari')">
+        <h2>🍌 Falahari</h2>
+        <div id="falahari" class="dropdown-content"></div>
+      </div>
+  
+      <div class="dropdown" onclick="toggleDropdown('veg')">
+        <h2>🥗 Pure Veg</h2>
+        <div id="veg" class="dropdown-content"></div>
+      </div>
+  
+      <div class="dropdown" onclick="toggleDropdown('tea')">
+        <h2>🍵 Tea</h2>
+        <div id="tea" class="dropdown-content"></div>
+      </div>
+    </div>
+
+    <div class="cart">
+      <h2>Cart</h2>
+      <ul id="cart-items" style="list-style: none; padding: 0;"></ul>
+      <p>Total: ₹<span id="total-price">0</span></p>
+      
+      <button onclick="placeOrder()">Place Order</button>
+    </div>
+  </div>
+
+  <div class="popup" id="order-success">Order Placed Successfully! 🎉</div>
+
+  <script>
+    const categories = {
+        cakes: [ 
+      { name: "Chocolate Cake ", price: 200,    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTISptptNMXJPRUo9UG0OwXm6XSY4bFjrHaiQ&s" },
+      { name: "Vanila chips Cake", price: 250, img: "https://merakcakes.com/cdn/shop/files/VanillaChocoChipsCake-3.jpg?v=1713853700" },
+      { name: "Black Forest Cake", price: 280, img: "https://www.greatestbakery.in/wp-content/uploads/2023/05/Black-Forest-Elite-Cake.jpg" },
+      { name: "Red valvet cake ", price: 300,  img: "https://pyramideats.com/cdn/shop/files/EgglessRedVelvetCake1.webp?v=1686747136&width=900" },
+      { name: "Fruit cake", price: 250,        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiN9I_mfXgJzgz2GSten7tPDQgpxBr0i6nLw&s" },
+      { name: "Strawberry cake", price: 280, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqSZ5RK2EdTobgHpSmz2NPy-rt3etiBpAsgw&s" },
+      { name: "Coconut Cake", price: 290, img: "https://www.oliviascuisine.com/wp-content/uploads/2016/04/Brazilian-Moist-Coconut-Cake-480x480.jpg" },
+      { name: "Caremel Cake", price: 220, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwF48NWbM5OcrpXN2NJahJ0DmeGpR6f-NJtQ&s" },
+      { name: "Chocolate Ice cream ", price: 90, img: "https://www.recipessimple.com/wp-content/uploads/2023/08/Chocolate-Brownie-Ice-Cream-Recipe.jpg" },
+      { name: "Vanila Ice Cream", price: 70, img: "https://vaya.in/recipes/wp-content/uploads/2018/12/Vanilla-Ice-Cream.jpg" },
+      { name: "Strawberry Ice cream", price: 80, img: "https://www.milkmaid.in/sites/default/files/2023-07/Strawberry-Ice-Cream-335x300_2_11zon_11zon.jpeg" },
+      { name: "Mava Kulfi ", price: 30, img: "https://5.imimg.com/data5/IOS/Default/2023/10/349746694/OB/SP/DX/12203761/product-jpeg-500x500.png" },
+      { name: "strawberry kulfi", price: 65, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3bL7YmnIzKs28GoAfjJ8RATTJRfOqFBZWUA&s" },
+    ],
+    pizzas: [
+      { name: "Margherita Pizza", price: 165, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqLEoGo3bHJYJEpRIaveeChxuCkXPoLk3RNg&s" },
+      { name: " Corn Mushroom Pizza", price: 180, img: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/tandoori-mushroom-&-sweet-corn-pan-medium.49a1287d1cece07781c106e552979fa2.1.jpg" },
+      { name: "Golden Corn Pizza", price: 120, img: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/corn.f8baa08ad7f607f1de30f96bb9245b50.1.jpg" },
+      { name: "Cheese Volcano pizza", price: 309, img: "https://www.dominos.com.sg/ManagedAssets/SG/product/PXVH/SG_PXVH_en_hero_12860.jpg?v-1810547859" },
+      { name: "Cheese Burst Pizza", price: 250, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLD7YNpIfnu6J_kTPKQfCKL3j1xSGNhlosiVmmNgEi6luUh56dIAqcZD2np0eB0lsRI3A&usqp=CAU" },
+      { name: "Aloo Tikki Burger", price: 90, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIYbfVvQ8tlU0a0QcebNp8zYyXUggQFDm6xQ&s" },
+      { name: "Classic Non Veg Burger", price: 159, img: "https://c.ndtvimg.com/2022-04/k9toe6b8_burger_625x300_23_April_22.jpg?im=FeatureCrop,algorithm=dnn,width=1200,height=675" },
+      { name: "Taco Mexicana Veg", price: 169, img: "https://www.dominos.co.in//files/items/Main_Menu-VG.jpg" },
+      { name: "Spicy Chken Pops", price: 109, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDEk5WkPYDReC0xQQqvmypeUXJWr_tGJGRpw&s" }
+    ],
+      biryani: [{ name: "Veg Biryani", price: 200, img: "https://www.terrafood.co.in/cdn/shop/files/VegBiryani.jpg?crop=center&height=2048&v=1687766592&width=2048" },
+      { name: "Non Veg Biryani", price: 150, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQ7gBba1fN9SV_ReB1X2iNytVqe2KTWrR37DfSXwBHFcn4q-IBexaSpN3rx1Mj8BZ92to&usqp=CAU" },
+      { name: "Egg Fried Rice", price: 180, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxF7j3jLduNXcPlue3b9mUWTFDmZEX1t9ktA&s" },
+      { name: "Manchurian Rice", price: 120, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYRw0mZBBIN_wdKEbhBIo3mwvuxfMC2LFCBQ&s" },
+      { name: "Veg Schezwan Fried Rice", price: 260, img: "https://www.cookclickndevour.com/wp-content/uploads/2016/04/schezwan-fried-rice-recipe-1.jpg" },
+      { name: "Paneer Fried Rice", price: 180, img: "https://www.indianhealthyrecipes.com/wp-content/uploads/2024/07/paneer-pulao-recipe-500x375.jpg" },
+      { name: "Veg Rice", price: 90, img: "https://www.kannammacooks.com/wp-content/uploads/schezwan-veg-fried-rice-1.jpg" },
+      ],
+      chinese: [
+      { name: "Veg noodles", price: 120, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRr5j9u7DUHnQEKv5i4L9JT2c1vrYAKlqdRvw&s" },
+      { name: "Manchurian noodles", price: 150, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-lz7LXRSdlhyCTYmuTsb7eVzE1IecTSmskE5wmrRVV17Izx4QaYu-jJw_Zyg-SvxVSXk&usqp=CAU" },
+      { name: "Schezwan noodles", price: 180, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCA5Swv1yc0McEmIfxYE0Yj7oxbvcaPZvcsw&s" },
+      { name: "Egg noodles", price: 160, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRh_Z1fUOrdqBvExYJjgNqymwmY7Gz6LoO4qXOn7Bhx7FI8PMicppZ8FR0C7P8xwMRFAC0&usqp=CAU" },
+      { name: "Chiken Lollipop", price: 250, img: "https://lh3.googleusercontent.com/proxy/3M5fKmqCsyKjF6vxj75sFkYj29l2DoKJWbBFGph1eBeygd59_flsuVtof6fZVbiO_sB4a0Wz63Nrb0qKLt1q-8zg-t5LYWcBQA" },
+      { name: "Paneer Schezwan noodles", price: 230, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTK2RmIFPEOqd5PXSB3Z4Rx5t5XH-sAxtpb0w&s" },
+      { name: "Chili Paneer", price: 249, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQE8A_7IhSE6cgLTqi2Dna3GksICuhZSaavIA&s" },
+      { name: "Paneer noodles ", price: 200, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRr9loQVxZjGp2bYVeUrwsbjARLqavr04AqrQ&s" },
+      { name: "Manchurian grevy", price: 160, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8b4ErqncyO8aHN_MR7eS7LJMgAaBJfotST4gz_X5qaK2eV3OHPC9xgBcphPJN8uKckHI&usqp=CAU" },
+      { name: "Dry Manchurian", price: 180, img: "https://www.shutterstock.com/image-photo/veg-manchurian-vegetable-balls-dipped-260nw-2490980725.jpg" }
+    ],
+      chowpatty: [
+      { name: "White Souce pasta", price: 200, img: "https://www.indianhealthyrecipes.com/wp-content/uploads/2024/04/white-sauce-pasta.jpg" },
+      { name: "Chole Kulche", price: 150, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUVuVHH0XkjGfsu0ZtgvPzpelaypATxmL4HA&s" },
+      { name: "Red souce Pasta", price: 180, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvOBsdOXEwOQToE0g2u-1IJUE77KdwLtgvyA&s" },
+      { name: "Sandwich", price: 120, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFTi3hH11i2UB_8AVLxYzFRoZjjj-2LZczDg&s" },
+      { name: "French Fries", price: 100, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLetnQTeyzm8StHzS_UpZDjW5m9M1uP4uPxg&s" },
+      { name: "Soap", price: 80, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAwNdNZG03VdNqK4_OqqHCxFbyxIF6KgWbcw&s" },
+      { name: "Crispy corn", price: 90, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqJ84ynjiOrCXMOqwlh8vXIdQTM0NFp0Bwe4GtGvZTVtOcbpPWBfCDjIlj4vHdRCMDSeM&usqp=CAU" },
+      { name: "Pakora PLatter", price: 200, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTte2epWjVQK3X8av_81-7vQWeIMDuk7IEYOQ&s" },
+      { name: "Chole Bhature", price: 150, img: "https://i.pinimg.com/736x/80/3f/f0/803ff029867e021b7b4193f58e1c4ad1.jpg" },
+      { name: "Pav Bhaji", price: 150, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH88wG8X4OUGuMDJYnh8RhGdu4KBsqcgSThw&s" }
+    ],
+  
+      drinks: [
+      { name: "Coca cola", price: 90, img: "https://t4.ftcdn.net/jpg/02/84/65/61/360_F_284656117_sPF8gVWaX627bq5qKrlrvCz1eFfowdBf.jpg" },
+      { name: "Fanta", price: 80, img: "https://t3.ftcdn.net/jpg/02/94/38/74/360_F_294387467_RvmDw6qbKMYVO6CPZlqCaKCDghl8VT0m.jpg" },
+      { name: " Lime Soda", price: 70, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQesNNLtgLZJxbgUpaWmxEiuYTRLpsQkD8rUg&s" },
+      { name: "Masala Soda", price: 85, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj7ywbx1KtYL23XRTU59qrckG1wSAyJLRnLYH28RBFOdOzBinxBKqH0OU5GfxMv5v69V8&usqp=CAU" },
+      { name: "Mint Mojito", price: 90, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW4iJUyW0vvlshQsEvVNGgDcDv3rCumaIoiQ&s" },
+      { name: "Mocktail", price: 80, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREPYaORYai19WLQ1ExHL7OEa7WEA6H6CNp1w&s" },
+      { name: "Chocolate Shake", price: 190, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAzi_KTQBapKfSN380v2_IapMCTpQs1RaZYw&s" },
+      { name: "Oreo Shake", price: 200, img: "https://bellyfull.net/wp-content/uploads/2020/07/Oreo-Milkshake-blog-3.jpg" },
+      { name: "blueberry Shake", price: 170, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXxTBreRj_nsjgcttVRzvLgZgrzsGnEUVZSA&s" },
+      { name: "Kit Kat Shake", price: 150, img: "https://tvanamm.com/wp-content/uploads/2024/01/Kitkat-milkshake-1-1.jpg" },
+      { name: "Vanila Shake", price: 160, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCaxGrANUQFsvbHXvIkeVHaVNI1DTXelrCSw&s" }
+    ],
+      dessert: [
+      { name: "Waffle", price: 200, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4cLpnOcgsMOvN9LhxkPVQJkG0IShefhrisQ&s" },
+      { name: "Brownie", price: 150, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc_UcmfRGHL22slthg9YlTqEgYOZC05Ak4cg&s" },
+      { name: "Muffins", price: 180, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqiGYT9gF115Ifvy2eBiPiP3nc-laGzXwhmg&s" },
+      { name: "Custard", price: 120, img: "https://www.indianhealthyrecipes.com/wp-content/uploads/2021/05/fruit-custard-recipe.jpg" },
+      { name: "Ras Malai", price: 100, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRe_iE1P5sbsw7izWdPDzEIn-R8tK-3yRbLA&s" },
+      { name: "Gulab jamun", price: 80, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3aJrkMZfZWaRkqQu36Y9TBzYlCrkKHvy7mw&s" },
+      { name: "Jalebi", price: 90, img: "https://thumbs.dreamstime.com/b/indian-sweet-jalebi-traditional-dessert-india-77486391.jpg" },
+      { name: "Rabdi", price: 200, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVm0SVG4KEAU1p59aEZlN2cKEyRm38eDf5NA&s" },
+      { name: "Imarti", price: 70, img: "https://blessmyfoodbypayal.com/wp-content/uploads/2021/10/1634493923024.jpg" },
+      { name: "kheer", price: 120, img: "https://www.honeywhatscooking.com/wp-content/uploads/2020/10/Rice-Kheer-Indian-Rice-Pudding44.jpg" }
+    ],
+      falahari: [
+      { name: "Sabudana", price: 200, img: "https://c.ndtvimg.com/2022-08/ft4hhqjo_sabudana-khichdi_625x300_16_August_22.jpg?im=FeatureCrop,algorithm=dnn,width=1200,height=675" },
+      { name: " Sabudana vada", price: 150, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDlfVJmsHV9OVel-hifBL2f3rSRCCpNXqDCg&s" },
+      { name: "Fruit Salat", price: 180, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXN9UyMSTsGtKxobesVZujqr5voTeBXV6JiA&s" },
+      { name: "Khoya Barfi", price: 120, img: "https://www.ramasrey.com/wp-content/uploads/2022/10/Falahari-Khoya-Barfi-scaled.jpg" },
+      { name: "Aloo Penuts", price: 100, img: "https://www.rachnacooks.com/wp-content/uploads/2019/09/vrat-ke-aloo1.jpg" },
+      { name: "Rajgira Chivda", price: 80, img: "https://masalachilli.com/wp-content/uploads/2019/03/Rajgira-Chivda-1-e1583387294187.jpg" },
+      { name: "Sev Shahi Falhari", price: 90, img: "https://m.media-amazon.com/images/I/71Uz+wCoS-L._AC_UF350,350_QL80_.jpg" },
+      { name: "Makhana Chivda", price: 85, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRO0MBimfbVQPp4pZPgE3TRGxdF69Ksx95nTQ&s" },
+    ],
+      veg: [
+      { name: "Alu Chana Masala ", price: 130, img: "https://images.app.goo.gl/GC9EjKvtVokGabMF9&s" },
+      { name: "Kadhai Pakoda", price: 180, img: "https://images.app.goo.gl/uz9c5aJbiE4qhwsE9" },
+      { name: "Shahi Paneer ", price: 180, img: "https://images.app.goo.gl/Y5CrfM2bd6F2mkHYA(" },
+      { name: "Paneer Pasanda", price: 180, img: "https://images.app.goo.gl/ALXoGnbscaqfiAF59" },
+      { name: "Kadhai Paneer", price: 210, img: "https://images.app.goo.gl/XCtV13FHcv2SxvXE9" },
+      { name: "Paneer Curry", price: 160, img: "https://images.app.goo.gl/6uKqhHSoUf7UyfKt8" },
+      { name: "Chole", price: 180, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7VkMm32K60L_pnmrAr6KaDMiG5SimlBNQXA&s" },  
+      { name: "Dal Fry", price: 120, img: "https://images.app.goo.gl/gewhVrycGQoYAJuw7" },
+      { name: "Palak Paneer", price: 190, img: "https://images.app.goo.gl/CxxGtTvnwdTJVKf46" },
+      { name: "Malai Kofta", price: 200, img: "https://www.google.com/imgres?imgurl=https%3A%2F%2Fthetableofspice.com%2Fwp-content%2Fuploads%2F2022%2F09%2FMalai-Kofta.jpg&tbnid=SOmA1gdIT_6BiM&vet=1&imgrefurl=https%3A%2F%2Fthetableofspice.com%2Frecipes%2Fmalai-kofta%2F&docid=6_V9G-SO-DmLWM&w=1940&h=2560&hl=en-GB&source=sh%2Fx%2Fim%2Fm1%2F4&kgs=707015d4bdcae0b5" },
+      { name: "Dal Makhni", price: 120, img: "https://images.app.goo.gl/9VfgWedFTx1sefUv5" },
+      { name: "Butter Naan ", price: 30, img: "https://images.app.goo.gl/M8R4xpnzekeiLe6N8" },
+      { name: "Plain Roti", price: 15, img: "https://images.app.goo.gl/TXhKLknbPPeCugAu6" },
+      { name: "Kulcha ", price: 30, img: "https://images.app.goo.gl/uaK2LwKt2CibYqug6" },
+      { name: "Jeera Rice", price: 35, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5lYNJSMPAxGzaaGBL77Fjv0-ONAaVOzRxZQ&s" },
+      { name: "Raita", price: 60, img: "https://images.app.goo.gl/Xvc5G3QebZk38Ast5" },
+      { name: "Litti Chokha", price: 250, img: "https://images.app.goo.gl/7GjyUY5srkPmsmUK8" },
+      { name: "Dal Bati", price: 250, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLetnQTeyzm8StHzS_UpZDjW5m9M1uP4uPxg&s" },
+      ],
+      tea: [
+      { name: "Masala chai", price: 20, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZ9c4T8ahaLDklv9SRpAWhrYIyRZYuphaLPg&s" },
+      { name: "Adrak chai", price: 30, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxCvylPiu9UNSUSfmJFP0KFzH8H_OFIy-2jg&s" },
+      { name: "Elaichi chai", price: 25, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS90IIBiU6SW1KytulhM6ixgKQuX15QC92PYA&s" },
+      { name: "Chocolate Chai", price: 400, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjHpQE_f4I9H2TMoaVVdXf4TDlp8kPa7-JfQ&s" },
+      { name: "Coffee", price: 80, img: "https://www.caffesociety.co.uk/assets/recipe-images/flat-white-small.jpg" },
+      { name: "Cappuccino", price: 110, img: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Cappuccino_in_original.jpg/800px-Cappuccino_in_original.jpg" },
+      { name: "Latte", price: 120, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlfDVkfsviOMEoiZC729CLQAD5HhGNeZQKxBNod35icBXq_nMXdQMamjkdPoQDGjPi6tpnlPCz9_aO6jjIBj7--erGwR0VfZBQ2Hul4D0" },
+      { name: "Flat White ", price: 150, img: "https://static.toiimg.com/thumb/86699095.cms?width=1200&height=900" },
+      { name: "Dark Coffee", price: 90, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToc1Zor80zVJrca_z7ZkekwqxrwKO08o2kcA&s" }
+    ],
+      SouthIndian: []
+    };
+    
+    function toggleDropdown(category) {
+    const content = document.getElementById(category);
+    content.style.display = content.style.display === "flex" ? "none" : "flex";
+    if (content.innerHTML.trim() === "") {
+      populateMenu(category);
+    }
+  }
+
+  function populateMenu(category) {
+    const container = document.getElementById(category);
+    container.style.display = "flex";
+    categories[category].forEach(item => {
+      const div = document.createElement("div");
+      div.className = "item";
+      div.innerHTML = `
+        <img src="${item.img}" alt="${item.name}">
+        <div style="flex: 1; margin-left: 10px;">
+          <strong>${item.name}</strong><br>₹${item.price}
+        </div>
+        <button onclick='addToCart("${item.name}", ${item.price})'>Add</button>
+      `;
+      container.appendChild(div);
+    });
+  }
+
+  const cart = [];
+
+  function addToCart(name, price) {
+    cart.push({ name, price });
+    renderCart();
+  }
+
+  function removeItem(index) {
+    cart.splice(index, 1);
+    renderCart();
+  }
+
+  function renderCart() {
+    const list = document.getElementById("cart-items");
+    const total = document.getElementById("total-price");
+    list.innerHTML = "";
+    let totalPrice = 0;
+    cart.forEach((item, index) => {
+      totalPrice += item.price;
+      const li = document.createElement("li");
+      li.innerHTML = `${item.name} - ₹${item.price} <button onclick="removeItem(${index})">❌</button>`;
+      list.appendChild(li);
+    });
+    total.textContent = totalPrice;
+  }
+
+  function placeOrder() {
+    if (cart.length === 0) {
+      alert("Please add items to cart!");
+      return;
+    }
+    document.getElementById("order-success").style.display = "block";
+    setTimeout(() => {
+      document.getElementById("order-success").style.display = "none";
+    }, 3000);
+    cart.length = 0;
+    renderCart();
+  }
+</script>
+  </body>
+</html>
